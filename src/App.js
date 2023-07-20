@@ -1,11 +1,13 @@
-import React from "react";
-import "./style.css";
+import './style.css';
+import React from 'react';
+import Navbar from './components/Navbar/Navbar';
+
 
 export default function App() {
   return (
     <div>
-      <h1>Redux toolkit</h1>
-      <p>Ny Krishnam UPadhayy</p>
+     
+     <Navbar/>
     </div>
   );
 }
