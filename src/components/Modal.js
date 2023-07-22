@@ -1,17 +1,39 @@
-import React from 'react'
-const Modal = ()=>{
-  return <aside className='modal-container'>
-    <div className = 'modal'>
-      <h4>Remove all the Items from the cart ?</h4>
-      <div className = 'btn-container'>
-        <button type ='button' className = 'btn confirm-btn'>Confirm</button>
-        <button type ='button' className = 'btn clear-btn'>Clear</button>
+import React from 'react';
+import { clearCart, removeItem } from '../features/cart/cartSlice';
+import { closeModal } from '../features/modal/modalSlice';
+
+import { useDispatch } from 'react-redux';
+import { clearCart } from '../features/cart/cartSlice';
+const Modal = () => {
+  const dispatch = useDispatch();
+  return (
+    <aside className="modal-container">
+      <div className="modal">
+        <h4>Remove all the Items from the cart ?</h4>
+        <div className="btn-container">
+          <button
+            type="button"
+            className="btn confirm-btn"
+            onClick={() => {
+              dispatch(clearCart());
+              dispatch(closeModal());
+            }}
+          >
+            Confirm
+          </button>
+          <button
+            type="button"
+            className="btn clear-btn"
+            onClick={() => {
+              dispatch(closeModal());
+            }}
+          >
+            cancel
+          </button>
+        </div>
       </div>
-    </div>
-
-
-
-  </aside>
-}
+    </aside>
+  );
+};
 
 export default Modal;
