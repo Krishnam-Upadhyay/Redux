@@ -1,26 +1,31 @@
 import './style.css';
-import { useEffect  } from 'react';
+import { useEffect } from 'react';
 import React from 'react';
 import Navbar from './components/Navbar/Navbar';
 import CartContainer from './components/CartContainer';
-import {calculateTotal } from './features/cart/cartSlice'
-import {useDispatch,useSelector} from 'react-redux';
+import { calculateTotal } from './features/cart/cartSlice';
+import { useDispatch, useSelector } from 'react-redux';
+import Modal from './components/Modal';
 
-function App(){
-  const {cartItem} = useSelector(((store)=>{
+function App() {
+  const { cartItem } = useSelector((store) => {
     return store.cart;
-  }))
+  });
+  const { isOpen } = useSelector((store) => {
+    return store.modal;
+  });
   const dispatch = useDispatch();
 
-  useEffect(()=>{
+  useEffect(() => {
     dispatch(calculateTotal());
-
-  },[cartItem])
+  }, [cartItem]);
   return (
     <div>
+      {isOpen && <Modal />}
+
       <Navbar />
       <CartContainer />
     </div>
   );
-};
+}
 export default App;
