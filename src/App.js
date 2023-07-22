@@ -25,7 +25,7 @@ function App() {
   });
 
   if (isLoading) {
-    return <h1>Loading</h1>;
+    return <div><h1>Loading</h1></div>;
   }
   return (
     <div>
